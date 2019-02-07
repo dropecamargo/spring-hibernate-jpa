@@ -21,7 +21,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class BasicConfiguration extends WebSecurityConfigurerAdapter {
-
+	
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http.authorizeRequests()
+//			.anyRequest().authenticated()
+//			.and()
+//			.formLogin()
+//			.and()
+//			.httpBasic();
+//	}
+	
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/app/login")
 				.permitAll().failureUrl("/app/login?error=true").defaultSuccessUrl("/app/home", true);
